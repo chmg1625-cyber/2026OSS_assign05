@@ -1,0 +1,37 @@
+1. Deployment
+- Vercel URL: https://your-project-name.vercel.app
+
+2. Key Learning
+- querySelector와 innerHTML로 DOM 조작 및 화면 갱신
+- push, filter, find 등 배열 메서드로 데이터 제어
+- preventDefault로 폼 제출 시 새로고침 방지
+
+3. CRUD Service
+- 주제: 친구 목록 관리 (crud.html)
+- 필드: id, name, age, College, major
+- Create: 폼 입력값 검사 후 push로 배열에 추가
+- Read: render 함수에서 forEach 돌며 테이블 출력
+- Update: 수정 버튼 누르면 find로 찾아 폼에 채우고 내용 수정 후 저장
+- Delete: confirm 확인 후 filter로 배열에서 제거
+
+4. JavaScript
+- document.querySelector: 태그 요소 선택
+- addEventListener: 클릭 및 제출 이벤트 감지
+- event.preventDefault: 새로고침 차단
+- push: 배열 데이터 추가
+- find: 수정할 객체 탐색
+- filter: 삭제 대상 제외
+- render: 화면 다시 그리기
+
+5. AI / Search Usage
+- Tool: ChatGPT
+- Purpose: 수정 시 특정 데이터 찾는 법 확인
+- Used: find 메서드로 해당 id 객체 찾는 코드 적용
+- What I Learned: find가 조건에 맞는 요소를 반환한다는 점을 이해함
+
+6. Problem & Solution
+- 문제: 추가할 때마다 기존 목록이 중복으로 쌓임
+- 해결: render 시작할 때 innerHTML을 빈 문자열로 초기화함
+
+7. Reflection
+배열로 CRUD 동작 구현하는 법을 배웠다. 수정 기능 만들 때 살짝 헷갈렸는데 해보니까 이해됐다.
