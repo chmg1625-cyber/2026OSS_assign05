@@ -5,39 +5,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나랑친구할래?</title>
+    <style>
+
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    header {
+        text-align: center;
+        border-bottom: 2px solid lightblue;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    #friend-form {
+        border: 1px solid lightblue;
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+
+    #friend-form div {
+        margin-bottom: 8px;
+    }
+
+    .form-label {
+        display: inline-block;
+        width: 80px;
+        border: 1px solid lightblue;
+        padding: 2px 4px;
+        margin: 2px;
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        padding: 4px;
+        border: 1px solid #ccc;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: lightblue;
+    }
+
+    #college,
+    #major {
+        width: 200px;
+    }
+
+    button {
+        padding: 4px 10px;
+        border: 1px solid lightblue;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: lightblue;
+    }
+
+    #submit-btn {
+        background-color: lightblue;
+        font-weight: bold;
+    }
+
+    #submit-btn:hover {
+        background-color: deepskyblue;
+        color: white;
+    }
+
+    #cancel-btn {
+        background-color: #eee;
+        border-color: #ccc;
+    }
+
+    #cancel-btn:hover {
+        background-color: #ddd;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th {
+        background-color: lightblue;
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        padding: 6px;
+    }
+
+    tbody tr:hover {
+        background-color: #f4faff;
+    }
+
+    .btn-edit {
+        border-color: skyblue;
+        padding: 2px 6px;
+    }
+
+    .btn-delete {
+        border-color: lightcoral;
+        color: crimson;
+        padding: 2px 6px;
+    }
+
+    .btn-delete:hover {
+        background-color: lightcoral;
+        color: white;
+    }
+</style>
 </head>
 
 <body>
-    <h1>친구 관리</h1>
+    <header>
+        <h1>친구 관리</h1>
+    </header>
 
-    <form id="friend-form">
-        <input type="hidden" id="edit-id" value="">
+    <main>
+        <div>
+        <form id="friend-form">
+            <input type="hidden" id="edit-id" value="">
 
-        <div>
-            <label for="name">이름: </label>
-            <input type="text" id="name" placeholder="이름 입력">
-        </div>
-        <div>
-            <label for="age">나이: </label>
-            <input type="number" id="age" placeholder="나이 입력">
-        </div>
-        <div>
             <div>
-                <label for="college">College: </label>
-                <select id="college">
-                    <option value="">-- 알씨를 선택하세요 --</option>
-                    <option value="Carmichael RC">Carmichael RC</option>
-                    <option value="Torrey RC">Torrey RC</option>
-                    <option value="Jankiryeo RC">Jankiryeo RC</option>
-                    <option value="SonYang-won RC">SonYang-won RC</option>
-                    <option value="Kyper RC">Kyper RC</option>
-                    <option value="Yeolsonghaksa RC">Yeolsonghaksa RC</option>
-                </select>
+                <label class="form-label" for="name">이름: </label>
+                <input type="text" id="name" placeholder="이름 입력">
             </div>
-        </div>
-        <div>
-            <label for="major">전공: </label>
-            <select id="major">
+            <div>
+                <label class="form-label" for="age">나이: </label>
+                <input type="number" id="age" placeholder="나이 입력">
+            </div>
+            <div>
+                <div>
+                    <label class="form-label" for="college">College: </label>
+                    <select id="college">
+                        <option value="">-- 알씨를 선택하세요 --</option>
+                        <option value="Carmichael RC">Carmichael RC</option>
+                        <option value="Torrey RC">Torrey RC</option>
+                        <option value="Jankiryeo RC">Jankiryeo RC</option>
+                        <option value="SonYang-won RC">SonYang-won RC</option>
+                        <option value="Kyper RC">Kyper RC</option>
+                        <option value="Yeolsonghaksa RC">Yeolsonghaksa RC</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="form-label" for="major">전공: </label>
+                <select id="major">
                     <option value="">-- 전공을 선택하세요 --</option>
                     <option value="Computer Science">Computer Science</option>
                     <option value="Counseling&Social welfare">Counseling&Social welfare</option>
@@ -53,78 +177,78 @@
                     <option value="Creative Convergence">Creative Convergence</option>
                     <option value="Spatial Environment">Spatial Environment</option>
                 </select>
+            </div>
+            <button type="submit" id="submit-btn">추가</button>
+            <button type="button" id="cancel-btn" style="display: none;">취소</button>
+        </form>
         </div>
-        <button type="submit" id="submit-btn">추가</button>
-        <button type="button" id="cancel-btn" style="display: none;">취소</button>
-    </form>
 
-    <hr>
+        <hr>
 
-    <!-- 2. 출력 영역 -->
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>이름</th>
-                <th>나이</th>
-                <th>College</th>
-                <th>전공</th>
-                <th>관리</th>
-            </tr>
-        </thead>
-        <tbody id="friend-list">
-            <!-- render() 함수를 통해 동적으로 tr이 들어감 -->
-        </tbody>
-    </table>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>College</th>
+                    <th>전공</th>
+                    <th>관리</th>
+                </tr>
+            </thead>
+            <tbody id="friend-list">
+            </tbody>
+        </table>
+    </main>
+</body>
 
-    <script>
-        // STEP 3: Array 데이터 구성
-        let friends = [
-            {
-                id: 1,
-                name: "박준영",
-                age: 20,
-                College: "Carmichael RC",
-                major: "Computer Science"
-            },
-            {
-                id: 2,
-                name: "Moza Naftalia Rundengan",
-                age: 20,
-                College: "Carmichael RC",
-                major: "Counseling&Social welfare"
-            },
-            {
-                id: 3,
-                name: "박승윤",
-                age: 25,
-                College: "Carmichael RC",
-                major: "International studies"
-            }
-        ];
+<script>
+    let friends = [
+        {
+            id: 1,
+            name: "박준영",
+            age: 20,
+            College: "Carmichael RC",
+            major: "Computer Science"
+        },
+        {
+            id: 2,
+            name: "Moza Naftalia Rundengan",
+            age: 20,
+            College: "Carmichael RC",
+            major: "Counseling&Social welfare"
+        },
+        {
+            id: 3,
+            name: "박승윤",
+            age: 25,
+            College: "Carmichael RC",
+            major: "International studies"
+        }
+    ];
 
-        let nextId = 4;
+    let nextId = 4;
 
-        // DOM 요소 선택
-        const form = document.querySelector("#friend-form");
-        const editIdInput = document.querySelector("#edit-id");
-        const nameInput = document.querySelector("#name");
-        const ageInput = document.querySelector("#age");
-        const collegeInput = document.querySelector("#college");
-        const majorInput = document.querySelector("#major");
-        const submitBtn = document.querySelector("#submit-btn");
-        const cancelBtn = document.querySelector("#cancel-btn");
-        const friendList = document.querySelector("#friend-list");
+    // DOM 요소 선택
+    const form = document.querySelector("#friend-form");
+    const editIdInput = document.querySelector("#edit-id");
+    const nameInput = document.querySelector("#name");
+    const ageInput = document.querySelector("#age");
+    const collegeInput = document.querySelector("#college");
+    const majorInput = document.querySelector("#major");
+    const submitBtn = document.querySelector("#submit-btn");
+    const cancelBtn = document.querySelector("#cancel-btn");
+    const friendList = document.querySelector("#friend-list");
 
-        // STEP 6: Read 구현
-        function render() {
-            // 중복 렌더링 방지를 위해 기존 내용 비우기
-            friendList.innerHTML = "";
+    // STEP 6: Read 구현
+    function render() {
+        // 중복 렌더링 방지를 위해 기존 내용 비우기
+        friendList.innerHTML = "";
 
-            friends.forEach(function (friend) {
-                const tr = document.createElement("tr");
+        friends.forEach(function (friend) {
+            const tr = document.createElement("tr");
 
-                tr.innerHTML = `
+            tr.innerHTML = `
                     <td>${friend.id}</td>
                     <td>${friend.name}</td>
                     <td>${friend.age}</td>
@@ -135,143 +259,130 @@
                         <button type="button" class="btn-delete" data-id="${friend.id}">삭제</button>
                     </td>
                 `;
-                friendList.appendChild(tr);
+            friendList.appendChild(tr);
+        });
+    }
+
+    function validateForm() {
+        if (nameInput.value.trim() === "") {
+            alert("이름을 입력해주세요.");
+            nameInput.focus();
+            return false;
+        }
+
+        if (nameInput.value.trim().length < 2 || nameInput.value.trim().length > 40) {
+            alert("이름은 2자 이상 40자 이하로 입력해야 합니다.");
+            nameInput.focus();
+            return false;
+        }
+
+        const ageVal = Number(ageInput.value);
+        if (!ageInput.value || ageVal <= 0 || ageVal > 100) {
+            alert("나이는 1부터 100 사이의 올바른 숫자를 입력해주세요.");
+            ageInput.focus();
+            return false;
+        }
+
+        if (collegeInput.value.trim() === "") {
+            alert("알씨를 선택해주세요.");
+            collegeInput.focus();
+            return false;
+        }
+
+        if (majorInput.value.trim() === "") {
+            alert("전공을 입력해주세요.");
+            majorInput.focus();
+            return false;
+        }
+
+        return true;
+    }
+    function resetForm() {
+        editIdInput.value = "";
+        form.reset();
+        submitBtn.textContent = "추가";
+        cancelBtn.style.display = "none";
+    }
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        const currentEditId = editIdInput.value;
+
+        if (currentEditId === "") {
+            const newFriend = {
+                id: nextId++,
+                name: nameInput.value.trim(),
+                age: Number(ageInput.value),
+                College: collegeInput.value.trim(),
+                major: majorInput.value.trim()
+            };
+
+            friends.push(newFriend);
+        } else {
+            const targetId = Number(currentEditId);
+            const targetFriend = friends.find(function (item) {
+                return item.id === targetId;
             });
+
+            if (targetFriend) {
+                targetFriend.name = nameInput.value.trim();
+                targetFriend.age = Number(ageInput.value);
+                targetFriend.College = collegeInput.value.trim();
+                targetFriend.major = majorInput.value.trim();
+            }
         }
 
-        // STEP 9: Validation 적용 (3개 이상 검사)
-        function validateForm() {
-            if (nameInput.value.trim() === "") {
-                alert("이름을 입력해주세요.");
-                nameInput.focus();
-                return false;
-            }
-
-            if (nameInput.value.trim().length < 2 || nameInput.value.trim().length > 40) {
-                alert("이름은 2자 이상 40자 이하로 입력해야 합니다.");
-                nameInput.focus();
-                return false;
-            }
-
-            const ageVal = Number(ageInput.value);
-            if (!ageInput.value || ageVal <= 0 || ageVal > 100) {
-                alert("나이는 1부터 100 사이의 올바른 숫자를 입력해주세요.");
-                ageInput.focus();
-                return false;
-            }
-
-            if (collegeInput.value.trim() === "") {
-                alert("알씨를 선택해주세요.");
-                collegeInput.focus();
-                return false;
-            }
-
-            if (majorInput.value.trim() === "") {
-                alert("전공을 입력해주세요.");
-                majorInput.focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        // 폼 초기화 및 수정 모드 취소
-        function resetForm() {
-            editIdInput.value = "";
-            form.reset();
-            submitBtn.textContent = "추가";
-            cancelBtn.style.display = "none";
-        }
-
-        // STEP 5: Create & STEP 7: Update 저장
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            // 유효성 검사 실패 시 중단
-            if (!validateForm()) {
-                return;
-            }
-
-            const currentEditId = editIdInput.value;
-
-            if (currentEditId === "") {
-                // 신규 데이터 추가
-                const newFriend = {
-                    id: nextId++,
-                    name: nameInput.value.trim(),
-                    age: Number(ageInput.value),
-                    College: collegeInput.value.trim(),
-                    major: majorInput.value.trim()
-                };
-
-                friends.push(newFriend);
-            } else {
-                // 기존 데이터 수정
-                const targetId = Number(currentEditId);
-                const targetFriend = friends.find(function (item) {
-                    return item.id === targetId;
-                });
-
-                if (targetFriend) {
-                    targetFriend.name = nameInput.value.trim();
-                    targetFriend.age = Number(ageInput.value);
-                    targetFriend.College = collegeInput.value.trim();
-                    targetFriend.major = majorInput.value.trim();
-                }
-            }
-
-            resetForm();
-            render();
-        });
-
-        // STEP 7: Update 폼 채우기 & STEP 8: Delete 구현
-        friendList.addEventListener("click", function (event) {
-            const target = event.target;
-            const targetId = Number(target.getAttribute("data-id"));
-
-            // 수정 버튼 클릭
-            if (target.classList.contains("btn-edit")) {
-                const targetFriend = friends.find(function (item) {
-                    return item.id === targetId;
-                });
-
-                if (targetFriend) {
-                    editIdInput.value = targetFriend.id;
-                    nameInput.value = targetFriend.name;
-                    ageInput.value = targetFriend.age;
-                    collegeInput.value = targetFriend.College;
-                    majorInput.value = targetFriend.major;
-
-                    submitBtn.textContent = "수정";
-                    cancelBtn.style.display = "inline";
-                }
-            }
-
-            // 삭제 버튼 클릭
-            if (target.classList.contains("btn-delete")) {
-                const isConfirmed = confirm("내마음속에서 사라져");
-                if (isConfirmed) {
-                    friends = friends.filter(function (item) {
-                        return item.id !== targetId;
-                    });
-
-                    if (editIdInput.value === String(targetId)) {
-                        resetForm();
-                    }
-
-                    render();
-                }
-            }
-        });
-
-        // 수정 취소 버튼 클릭 이벤트
-        cancelBtn.addEventListener("click", function () {
-            resetForm();
-        });
-
-        // 초기 화면 렌더링
+        resetForm();
         render();
-    </script>
+    });
+
+    friendList.addEventListener("click", function (event) {
+        const target = event.target;
+        const targetId = Number(target.getAttribute("data-id"));
+
+        if (target.classList.contains("btn-edit")) {
+            const targetFriend = friends.find(function (item) {
+                return item.id === targetId;
+            });
+
+            if (targetFriend) {
+                editIdInput.value = targetFriend.id;
+                nameInput.value = targetFriend.name;
+                ageInput.value = targetFriend.age;
+                collegeInput.value = targetFriend.College;
+                majorInput.value = targetFriend.major;
+
+                submitBtn.textContent = "수정";
+                cancelBtn.style.display = "inline";
+            }
+        }
+
+        if (target.classList.contains("btn-delete")) {
+            const isConfirmed = confirm("내마음속에서 사라져");
+            if (isConfirmed) {
+                friends = friends.filter(function (item) {
+                    return item.id !== targetId;
+                });
+
+                if (editIdInput.value === String(targetId)) {
+                    resetForm();
+                }
+
+                render();
+            }
+        }
+    });
+    cancelBtn.addEventListener("click", function () {
+        resetForm();
+    });
+
+    render();
+</script>
 </body>
 
 </html>
