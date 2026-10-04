@@ -229,7 +229,6 @@
 
     let nextId = 4;
 
-    // DOM 요소 선택
     const form = document.querySelector("#friend-form");
     const editIdInput = document.querySelector("#edit-id");
     const nameInput = document.querySelector("#name");
@@ -240,9 +239,7 @@
     const cancelBtn = document.querySelector("#cancel-btn");
     const friendList = document.querySelector("#friend-list");
 
-    // STEP 6: Read 구현
     function render() {
-        // 중복 렌더링 방지를 위해 기존 내용 비우기
         friendList.innerHTML = "";
 
         friends.forEach(function (friend) {
@@ -277,8 +274,8 @@
         }
 
         const ageVal = Number(ageInput.value);
-        if (!ageInput.value || ageVal <= 0 || ageVal > 100) {
-            alert("나이는 1부터 100 사이의 올바른 숫자를 입력해주세요.");
+        if (!ageInput.value || ageVal <= 0 || ageVal > 120) {
+            alert("나이는 1부터 120 사이의 올바른 숫자를 입력해주세요.");
             ageInput.focus();
             return false;
         }
