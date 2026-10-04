@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container {
+            width: 200px;
+            height: 50px;
+            background-color: rgb(249, 249, 221);
+        }
+    </style>
+    <script>
+        function heello() {
+            alert("밀어서 잠금해제");
+        }
+        window.addEventListener("load", function () {
+            const btnabc = document.querySelector("#btnabc");
+            btnabc.addEventListener("click", heello);
+        });
+
+
+        window.addEventListener("load", function () {
+            const fruitInput = document.querySelector("#Fruit");
+            const ad = document.querySelector("#ad");
+            const list = document,querySelector("ul");
+            ad.addEventListener("click", function () {
+
+
+            }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <!--계산기-->
+    <div id="calculator">
+        <input type="text" id="num1" size="5">
+        <Select id="xyz">
+            <option id="plus">+</option>
+            <option id="minus">-</option>
+            <option id="times">*</option>
+            <option id="divide">/</option>
+        </Select>
+        <input type="text" id="num2" size="5">
+        <button onclick="add()">=</button>
+        <input type="text" id="result" size="5">
+
+    </div>
+    <!-- inner HTML -->
+    <div id="div1" onclick="changeText()">Hello</div>
+
+    <div>
+        <div>
+            <button id="clickbtn1">이 버튼은 19세기 영국에서부터 시작되어 ~~~ (Alert) </button>
+            <button id="clickbtn2">이 버튼은 19세기 영국에서부터 시작되어 ~~~ ( inner Text )</button>
+            <button id="clickbtn3">이 버튼은 19세기 영국에서부터 시작되어 ~~~ ( Inner HTML)</button>
+            <div id="chanT">이곳의 데이터가 바뀜</div>
+        </div>
+        <div id="container">날살려주신다면금은보화를드리지요제발날살려주시오제발</div>
+        <button id="contain">이버튼으로번역</button>
+    </div>
+
+    <button id="addbtn">구조 추가</button>
+
+
+    <button id="minbtn">구조 삭제</button>
+
+    <button id="btnabc">나를눌러서성장판을잠금해제</button>
+
+    <div>
+        <input type="text" id="Fruit" placeholder="과일입력해라휴먼">
+        <button id="ad">추가</button>
+        <ul>
+            <li>사과</li>
+        </ul>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function changeText() {
+        document.getElementById("div1").innerHTML = "<h1>Hello Wolrd!</h1>";
+
+    }
+
+    function add() {
+        const num1 = document.querySelector("#num1").value;
+        const num2 = document.querySelector("#num2").value;
+        const operator = document.querySelector("#xyz").value;
+
+        let result;
+        if (operator === "+") {
+            result = Number(num1) + Number(num2);
+        } else if (operator === "-") {
+            result = Number(num1) - Number(num2);
+        } else if (operator === "*") {
+            result = Number(num1) * Number(num2);
+        } else if (operator === "/") {
+            result = Number(num1) / Number(num2);
+        }
+        document.querySelector("#result").value = result;
+
+    }
+
+
+    const clickbtn1 = document.querySelector("#clickbtn1");
+    clickbtn1.addEventListener("click", function () {
+        alert("버튼클릭");
+    });
+    const clickbtn2 = document.querySelector("#clickbtn2");
+    clickbtn2.addEventListener("click", function () {
+        document.querySelector("#chanT").innerText = "메롱";
+    });
+    const clickbtn3 = document.querySelector("#clickbtn3");
+    clickbtn3.addEventListener("click", function () {
+        document.querySelector("#chanT").innerHTML = "<b>나는개똥벌레뚜루루뚜루</b>";
+    });
+
+    const container = document.querySelector("#container");
+    const addbtn = document.querySelector("#addbtn");
+
+    const p = document.createElement("p");
+
+    addbtn.addEventListener("click", function () {
+        const p = document.createElement("p");
+        p.className = "added-item";
+        p.textContent = "우리이제헤어지자말해요"
+        container.appendChild(p);
+    });
+
+
+    const minbtn = document.querySelector("#minbtn");
+
+    minbtn.addEventListener("click", function () {
+        const item = document.querySelector(".added-item");
+        item.remove();
+    });
+
+</script>

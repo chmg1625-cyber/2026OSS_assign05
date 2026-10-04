@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="Fruit" placeholder="과일입력해라휴먼">
+        <button id="ad">추가</button>
+        <ul id="list">
+            <li>사과 <button class="del">remove</button></li>
+            <li>바나나 <button class="del">remove</button></li>
+            <li>오렌지 <button class="del">remove</button></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const input = document.querySelector("#Fruit");
+    const addBtn = document.querySelector("#ad");
+    const list = document.querySelector("#list");
+
+    addBtn.addEventListener("click", function () {
+        const item = input.value;
+        if (item) {
+            const li = document.createElement("li");
+            li.innerHTML = `${item} <button class="del">remove</button>`;
+            list.appendChild(li);
+        }
+    });
+            
+
+    list.addEventListener("click", function (e) {
+        if (e.target.classList.contains("del")) {
+            e.target.parentElement.remove();
+        }
+    });
+</script>
